@@ -21,11 +21,12 @@ __rvm_detect_system()
 
       _system_type="Linux"
 
-      if [[ -f /etc/upstream-release/lsb-release ]] && __rvm_detect_system_from_lsb_release upstream
+      if
+        [[ -f /etc/lsb-release ]] && __rvm_detect_system_from_lsb_release
       then
         :
       elif
-        [[ -f /etc/lsb-release ]] && __rvm_detect_system_from_lsb_release
+        [[ -f /etc/upstream-release/lsb-release ]] && __rvm_detect_system_from_lsb_release upstream
       then
         :
       elif
