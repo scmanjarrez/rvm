@@ -2,7 +2,11 @@
 
 __rvm_detect_system_from_lsb_release()
 {
-  local __system_name="$( awk -F'=' '$1=="DISTRIB_ID"{print $2}' /etc/lsb-release | head -n 1 | tr '[A-Z]' '[a-z]' | tr -d \" )"
+  local __lsb_release_file=""
+  if [ -n "$1" ]; then
+      __lsb_release_file="upstream-release/"
+  fi
+  local __system_name="$( awk -F'=' '$1=="DISTRIB_ID"{print $2}' /etc/${__lsb_release_file}lsb-release | head -n 1 | tr '[A-Z]' '[a-z]' | tr -d \" )"
 
   case $__system_name in
     deepin*)        _system_name="Deepin";;
@@ -18,7 +22,7 @@ __rvm_detect_system_from_lsb_release()
     *)              return 1
   esac
 
-  _system_version="$( awk -F'=' '$1=="DISTRIB_RELEASE"{print $2}' /etc/lsb-release | head -n 1 )"
+  _system_version="$( awk -F'=' '$1=="DISTRIB_RELEASE"{print $2}' /etc/${__lsb_release_file}lsb-release | head -n 1 )"
   _system_arch="$( uname -m )"
 
   return 0
