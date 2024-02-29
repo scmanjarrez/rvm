@@ -8,7 +8,7 @@
 * Add Support for OpenSSL 1.1/3.0 to older ruby versions [\#5248](https://github.com/rvm/rvm/pull/5248)
 * Update truffleruby-dev to use builds based on Ubuntu 20.04 [\#5322](https://github.com/rvm/rvm/issues/5322)
 * Install openssl gem for Ruby 3.0.6 [\#5340](https://github.com/rvm/rvm/pull/5340)
-* Patch to take into account /etc/upstream-release/lsb-release if present when detecting available binaries [\#3053](https://github.com/rvm/rvm/issues/3053)
+* Consider `upstream-release` to detect operating system [\#3053](https://github.com/rvm/rvm/issues/3053)
 
 #### Bug fixes
 
